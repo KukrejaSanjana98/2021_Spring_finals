@@ -5,9 +5,9 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import plotly.express as px
 
-def mergedata(data1, data2):
-    """
 
+def mergedata(data1: pd.DataFrame, data2: pd.DataFrame) -> pd.DataFrame:
+    """
     :param data1: This refers to the dataset 1 that is the input :World Happiness Report Dataset
     :param data2: This refers to the dataset 2 that is the input:World Health Expenditure Dataset
     :return:This will return the Clean Dataset
@@ -28,12 +28,11 @@ def mergedata(data1, data2):
     return clean_data
 
 
-def clean_age(df):
+def clean_age(df: pd.DataFrame) -> pd.DataFrame:
     """
-
-    :param df:
-    :return:
-
+    This function cleans the age column of dataset.
+    :param df:The input of this function is the dataframe
+    :return:This function return the clean dataset
 
     >>> sample_data = pd.DataFrame({'What is your age?': [10, 15, 20, 30, 40, 50, 60, 70, 80]})
     >>> clean_age(sample_data)['What is your age?'].to_list()
@@ -43,10 +42,11 @@ def clean_age(df):
     return df
 
 
-def clean_gender(dataframe):
+def clean_gender(dataframe: pd.DataFrame)-> pd.DataFrame:
     """
     This function is used for cleaning of the columns inside the dataset,we will clean the Gender column and merge all the other genders into one value
-    param:dataset
+    param:dataset: This function takes the dataset as  the input to clean the gender column
+    return:This function returns the clean dataset after cleaning the gender column
 
     >>> sample_data2 = pd.DataFrame({'What is your gender?': ['Male','Female','female','FEMALE','Woman','woman','w','womail','W','Female'], 'User_Id': [1,2,3,4,5,6,7,8,9,10] })
     >>> ans = clean_gender(sample_data2)['Gender']
@@ -72,13 +72,14 @@ def clean_gender(dataframe):
     return dataframe
 
 
-def givescore(dataframe):
+def give_score(dataframe: pd.DataFrame)-> pd.DataFrame:
     """
     This function calculates the MH_Score for every user
-    param:dataset
-
-
-
+    param:dataset The input is the dataframe
+    
+    >>> sample_data3 = pd.DataFrame({'Have you had a mental health disorder in the past?': ['Possibly', 'Rarely', 'Sometimes'], 'Do you think that team members/co-workers would view you more negatively if they knew you suffered from a mental health issue?':[ 'Yes,I think they would', 'Yes,I think they would', 'Yes,I think they would'], 'Do you think that team members/co-workers would view you more negatively if they knew you suffered from a mental health issue?':['Yes, they would', 'Yes, they would', 'Yes, they would'], 'Do you currently have a mental health disorder?':['Maybe', 'Possibly','Yes'], 'Have you had a mental health disorder in the past?' : ['Maybe','Yes', 'Maybe'], 'If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?': ['Sometimes', 'Rarely', 'Rarely'], 'If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?':['Sometimes' ,'Rarely', 'Sometimes'], 'Do you have a family history of mental illness?':[ 'Yes', 'No', 'Yes'], 'How willing would you be to share with friends and family that you have a mental illness?':['Not open at all', 'Not open at all', 'Not open at all'],'If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?':['Often', 'Often', 'Often'], 'If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?':['Often', 'Rarely', 'Mostly'],'Do you feel that being identified as a person with a mental health issue would hurt your career?':['Yes, I think it would', 'Yes, I think it would', 'Yes, I think it would'],'Do you feel that being identified as a person with a mental health issue would hurt your career?':['Yes, it has', 'Yes, it has', 'Yes, it has'],'Has your employer ever formally discussed mental health (for example, as part of a wellness campaign or other official communication)?':['Yes', 'No', 'Yes'] ,'Would you feel comfortable discussing a mental health disorder with your coworkers?':['Yes', 'Yes', 'No'], 'Have you ever sought treatment for a mental health issue from a mental health professional?': ['Yes', 'No', 'Maybe' ]})
+    >>> give_score(sample_data3)['MH_Score'].iloc[2]
+    30.0
     """
     nusers = len(dataframe.index)
     for userid in range(1, nusers + 1):
@@ -124,7 +125,7 @@ def givescore(dataframe):
     return dataframe
 
 
-def hypo1(df, column_name):
+def hypo1(df: pd.DataFrame, column_name: str):
     df['CompanySize'].value_counts()
     value_count = round(df.groupby(column_name)['MH_Score'].mean(),2)
     crossTab = pd.crosstab(df[column_name], df['MH_Score'],
@@ -140,7 +141,7 @@ def hypo1(df, column_name):
     plt.show()
 
 
-def hypo2(df, col1, col2):
+def hypo2(df: pd.DataFrame, col1: str, col2: str):
     crossTab = pd.crosstab(df[col1],df[col2],
                        normalize = "index")
     crossTab.columns.name = "Mental Health discussion with Supervisor"
@@ -151,7 +152,7 @@ def hypo2(df, col1, col2):
     plt.ylabel('Discussing mental health disorder with Supervisor')
 
 
-def hypo3(df, col1):
+def hypo3(df: pd.DataFrame, col1: str):
     bins = [18, 30, 40, 50, 60, 70]
     labels = ['18-29', '30-39', '40-49', '50-59', '60-75']
     age=df['What is your age?']
@@ -167,7 +168,7 @@ def hypo3(df, col1):
     plt.ylabel('Discussing mental health disorder with Supervisor')
 
 
-def scatter_plot(dataframe, x, y, color, size, hover_name, log_x, size_max):
+def scatter_plot(dataframe: pd.DataFrame, x: int, y: int, color, size, hover_name, log_x, size_max):
     fig = px.scatter(dataframe, x=x, y=y,
                      color=color, size=size,
                      hover_name=hover_name, log_x=log_x, size_max=size_max)
@@ -175,7 +176,7 @@ def scatter_plot(dataframe, x, y, color, size, hover_name, log_x, size_max):
     return fig
 
 
-def hypo4b(hdf1,hdf2,hdf3,hdf4):
+def hypo4b(hdf1: pd.DataFrame, hdf2: pd.DataFrame, hdf3: pd.DataFrame, hdf4: pd.DataFrame):
     fig =make_subplots(rows=2, cols=2,
                         specs=[[{"secondary_y": True}, {"secondary_y": True}],
                                [{"secondary_y": True}, {"secondary_y": True}]])
