@@ -8,14 +8,19 @@ All final assignments (projects) for IS597PR in Spring 2021 are expected to be f
 
 Data Sources:
 https://www.kaggle.com/sudalairajkumar/undata-country-profiles#country_profile_variables.csv
+
 https://osmihelp.org/research
+
 https://www.kaggle.com/moradnejad/world-happiness-report-2015-2020?select=2016.csv
 
 
 
 **Refrences:**
 https://hasanshhaa.medium.com/interesting-mental-health-insights-for-tech-workers-89f9913d20a4
+
 https://github.com/ronitrex/MentalHealth
+
+
 I felt that this was a great topic to explore as discussing mental health issues is considered taboo in many countries and communities. Hence, an analysis of the factors that affect mental health is very important in today's day and age.  
 
 
