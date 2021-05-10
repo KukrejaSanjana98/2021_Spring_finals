@@ -29,9 +29,13 @@ I felt that this was a great topic to explore as discussing mental health issues
 
 To gather insights in the Open Source Mental Health dataset as discussing mental health issues is considered taboo in many countries and communities, Instead of classifying a person having a mental health issue as a Boolean value, I have used the approach of providing a score to the user on the basis of the answers they have provided in the survey to determine the level of mental health issue a person has. 
 Some of the insights that I focused on were.
+
 •	Companies with a smaller number of people have less mental health issue.
+
 •	Companies with large number of employees formally discuss mental health issues with the supervisor.
+
 •	People in the age group 20-30 are most likely to discuss the mental health issues with the supervisor.
+
 •	Countries with High health expenditure improved the healthy score in the happiness report over the years.	
 
 **Hypothesis1**: We assume that the companies with smaller number of people have less mental health issue and through the help of the line chart we can see that as the number of people in the companies are increasing the Mental Health score is increasing which proves that companies with smaller number of people have less mental health issues.
